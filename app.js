@@ -4,25 +4,42 @@ myApp.controller('mainController', ['$scope', function ($scope) {
 	
 	'use strict';
 	$scope.rssString = 'test';
+	$scope.hasImage = true;
 
 //	$scope.searchPriceMin
 //	$scope.searchPriceMax
-//	$scope.hasImage
 
+	
 	$scope.outputRssString1 = function () {
-		var includeImgParam = '';
+		var includeParam = '';
+
 		if ($scope.hasImage) {
-			includeImgParam = '&hasPic=1';
+			includeParam += '&hasPic=1';
 		}
-		return 'http://toronto.craigslist.ca/search/sss?' + escape($scope.searchTerm) + '&sort=rel&format=rss' + includeImgParam;
+
+		if ($scope.searchPriceMin) {
+			includeParam += '&min_price=' + $scope.searchPriceMin;
+		}
+		if ($scope.searchPriceMax) {
+			includeParam += '&max_price=' + $scope.searchPriceMax;
+		}
+		
+		return 'http://toronto.craigslist.ca/search/sss?' + escape($scope.searchTerm) + '&sort=rel&format=rss' + includeParam;
 	};
 
 	$scope.outputRssString2 = function () {
-		var includeImgParam = '';
+		var includeParam = '';
+		var priceMin;
+		var priceMax;
+
 		if ($scope.hasImage) {
-			includeImgParam = '?&minNumberOfImages=1';
+			includeParam += '?&minNumberOfImages=1';
 		}
-		return 'http://www.kijiji.ca/' + $scope.searchTerm.replace(/\s/gi,'-') + '/k0l1700273' + includeImgParam;
+		if ($scope.searchPriceMin || $scope.searchPriceMax) {
+			includeParam += '&price=' + $scope.searchPriceMin + '__' + $scope.searchPriceMax;
+		}
+		
+		return 'http://www.kijiji.ca/' + $scope.searchTerm.replace(/\s/gi,'-') + '/k0l1700273' + includeParam;
 	};
 
 
