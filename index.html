@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>My Angular Concat RSS app</title>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <script src="//code.angularjs.org/1.4.2/angular.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <div ng-controller="mainController">
+
+      <h1>Concat RSS</h1>
+
+      <form>
+        <div class="form-group col-xs-12" ng-class="{ 'has-error' : !searchTerm.length }">
+          <label for="search-term" class="control-label">Search term</label>
+          <input id="search-term" ng-model="searchTerm" type="text" placeholder="search for some item" class="form-control" required="required"/>
+        </div>
+        
+        <div class="form-group col-xs-6" ng-class="{ 'has-error' : searchPriceMin < 0, 'has-error' : searchPriceMax < searchPriceMin }">
+          <label for="price-min" class="control-label">Min Price</label>
+          <input id="price-min" ng-model="searchPriceMin" type="number" placeholder="0" class="form-control" />
+		</div>
+	  <div class="form-group col-xs-6" ng-class="{ 'has-error' : searchPriceMax < searchPriceMin }">
+          <label for="price-max" class="control-label">Max Price</label>
+          <input id="price-max" ng-model="searchPriceMax" type="number" placeholder="100" class="form-control" />
+        </div>
+        
+      
+        <div class="checkbox col-xs-12">
+          <label>
+            <input ng-model="hasImage" type="checkbox"> Must contain image
+          </label>
+        </div>
+        
+        <hr />
+        
+          <pre>
+{{ outputRssString1() }}
+{{ outputRssString2() }}
+          </pre>
+          
+        <hr />
+        
+        <pre><code>
+http://toronto.craigslist.ca/search/sss?
+hasPic=1
+&max_price=900
+&min_price=100
+&query=mac%20mini%20i7%20quad
+&sort=rel
+&format=rss
+
+http://www.kijiji.ca/rss-srp-city-of-toronto/mac-mini-i7-quad/k0l1700273?
+price=100__900
+&minNumberOfImages=1
+        </code></pre>
+  
+        
+      </form>
+
+    </div>
+  </div>
+</body>
+
+</html>

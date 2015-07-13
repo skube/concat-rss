@@ -1,7 +1,7 @@
 # concat-rss
-Simple angular app to create &amp; concatenate RSS strings for use with RSS Mix
+Automatically creates RSS URLs for Craigslist and Kijiji to be used with something like RSS Mix.
 
-As a way to learn a little about AngularJS. Basically the goal is to create a simple app which can easily, and quickly create a string which can be easily copied into [RSS Mix](http://www.rssmix.com/)
+The goal is to create a simple Angular app (for learning purposes) which can easily and quickly create a string which can be easily copied into [RSS Mix](http://www.rssmix.com/)
 
 The output should be in the format :
 ```
