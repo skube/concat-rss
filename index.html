@@ -2,54 +2,99 @@
 <html lang="en" ng-app="myApp">
 
 <head>
-  <meta charset="UTF-8">
-  <title>My Angular Concat RSS app</title>
+	<meta charset="UTF-8">
+	<title>My Angular Concat RSS app</title>
 
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-  <script src="//code.angularjs.org/1.4.2/angular.min.js"></script>
-  <script src="app.js"></script>
+	<script src="//code.angularjs.org/1.4.2/angular.min.js"></script>
+	<script src="app.js"></script>
 </head>
 
 <body>
-  <div class="container">
+	<div class="container">
 
-    <div ng-controller="mainController">
+		<div ng-controller="mainController">
 
-      <h1>Concat RSS</h1>
+			<h1>Concat RSS</h1>
 
-      <form>
-        <div class="form-group col-xs-12" ng-class="{ 'has-error' : !searchTerm.length }">
-          <label for="search-term" class="control-label">Search term</label>
-          <input id="search-term" ng-model="searchTerm" type="text" placeholder="search for some item" class="form-control" required="required"/>
-        </div>
-        
-        <div class="form-group col-xs-6" ng-class="{ 'has-error' : searchPriceMin < 0, 'has-error' : searchPriceMax < searchPriceMin }">
-          <label for="price-min" class="control-label">Min Price</label>
-          <input id="price-min" ng-model="searchPriceMin" type="number" placeholder="0" class="form-control" />
-		</div>
-	  <div class="form-group col-xs-6" ng-class="{ 'has-error' : searchPriceMax < searchPriceMin }">
-          <label for="price-max" class="control-label">Max Price</label>
-          <input id="price-max" ng-model="searchPriceMax" type="number" placeholder="100" class="form-control" />
-        </div>
-        
-      
-        <div class="checkbox col-xs-12">
-          <label>
-            <input ng-model="hasImage" type="checkbox"> Must contain image
-          </label>
-        </div>
-        
-        <hr />
-        
-          <pre>
+			<!-- Numeric Textfield with Floating Label -->
+			<form action="#">
+
+				<div class="mdl-grid">
+
+					<div class="mdl-cell mdl-cell--12-col mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" id="search-term" />
+						<label class="mdl-textfield__label" for="search-term" ng-model="searchTerm">Search term</label>
+					</div>
+
+					<div class="mdl-cell mdl-cell--2-col-phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price-min" ng-model="searchPriceMin" />
+						<label class="mdl-textfield__label" for="price-min" ng-model="searchTerm">Min Price</label>
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+
+					<div class="mdl-cell mdl-cell--2-col-phone mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="price-max" ng-model="searchPriceMax" />
+						<label class="mdl-textfield__label" for="price-max" ng-model="searchTerm">Max Price</label>
+						<span class="mdl-textfield__error">Input is not a number!</span>
+					</div>
+
+					<label class="mdl-cell mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-hasImg">
+						<input type="checkbox" id="checkbox-hasImg" class="mdl-checkbox__input" ng-model="hasImage" checked />
+						<span class="mdl-checkbox__label">Must have image</span>
+					</label>
+
+
+				<pre class="mdl-cell mdl-cell--12-col">
 {{ outputRssString1() }}
 {{ outputRssString2() }}
-          </pre>
-          
-        <hr />
-        
-        <pre><code>
+        </pre>
+
+				</div>
+
+
+			</form>
+
+
+
+
+
+			<form>
+
+
+
+				<!--
+				<div class="form-group col-xs-12" ng-class="{ 'has-error' : !searchTerm.length }">
+					<label for="search-term" class="control-label">Search term</label>
+					<input id="search-term" ng-model="searchTerm" type="text" placeholder="search for some item" class="form-control" required="required" />
+				</div>
+-->
+
+				<!--
+				<div class="form-group col-xs-6" ng-class="{ 'has-error' : searchPriceMin < 0, 'has-error' : searchPriceMax < searchPriceMin }">
+					<label for="price-min" class="control-label">Min Price</label>
+					<input id="price-min" ng-model="searchPriceMin" type="number" placeholder="0" class="form-control" />
+				</div>
+				<div class="form-group col-xs-6" ng-class="{ 'has-error' : searchPriceMax < searchPriceMin }">
+					<label for="price-max" class="control-label">Max Price</label>
+					<input id="price-max" ng-model="searchPriceMax" type="number" placeholder="100" class="form-control" />
+				</div>
+-->
+
+
+<!--
+				<div class="checkbox col-xs-12">
+					<label>
+						<input ng-model="hasImage" type="checkbox"> Must contain image
+					</label>
+				</div>
+-->
+
+
+				<pre><code>
 http://toronto.craigslist.ca/search/sss?
 hasPic=1
 &max_price=900
@@ -62,12 +107,12 @@ http://www.kijiji.ca/rss-srp-city-of-toronto/mac-mini-i7-quad/k0l1700273?
 price=100__900
 &minNumberOfImages=1
         </code></pre>
-  
-        
-      </form>
 
-    </div>
-  </div>
+
+			</form>
+
+		</div>
+	</div>
 </body>
 
 </html>
