@@ -29,8 +29,8 @@ myApp.controller('mainController', ['$scope', function ($scope) {
 
 	$scope.outputRssString2 = function () {
 		var includeParam = '';
-		var priceMin;
-		var priceMax;
+		var priceMin = '';
+		var priceMax = '';
 
 		if ($scope.hasImage) {
 			includeParam += '?&minNumberOfImages=1';
