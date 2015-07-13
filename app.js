@@ -14,7 +14,7 @@ myApp.controller('mainController', ['$scope', function ($scope) {
 		if ($scope.hasImage) {
 			includeImgParam = '&hasPic=1';
 		}
-		return 'http://toronto.craigslist.ca/search/sss?' + $scope.searchTerm + '&sort=rel&format=rss' + includeImgParam;
+		return 'http://toronto.craigslist.ca/search/sss?' + escape($scope.searchTerm) + '&sort=rel&format=rss' + includeImgParam;
 	};
 
 	$scope.outputRssString2 = function () {
@@ -22,7 +22,7 @@ myApp.controller('mainController', ['$scope', function ($scope) {
 		if ($scope.hasImage) {
 			includeImgParam = '?&minNumberOfImages=1';
 		}
-		return 'http://www.kijiji.ca/' + $scope.searchTerm + '/k0l1700273' + includeImgParam;
+		return 'http://www.kijiji.ca/' + $scope.searchTerm.replace(/\s/gi,'-') + '/k0l1700273' + includeImgParam;
 	};
 
 
