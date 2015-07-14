@@ -33,13 +33,13 @@ myApp.controller('mainController', ['$scope', function ($scope) {
 		var priceMax = '';
 
 		if ($scope.hasImage) {
-			includeParam += '?&minNumberOfImages=1';
+			includeParam += '&minNumberOfImages=1';
 		}
 		if ($scope.searchPriceMin || $scope.searchPriceMax) {
 			includeParam += '&price=' + $scope.searchPriceMin + '__' + $scope.searchPriceMax;
 		}
 		
-		return 'http://www.kijiji.ca/' + $scope.searchTerm.replace(/\s/gi,'-') + '/k0l1700273' + includeParam;
+		return 'http://www.kijiji.ca/rss-srp-city-of-toronto/' + $scope.searchTerm.replace(/\s/gi,'-') + '/k0l1700273?' + includeParam;
 	};
 
 
