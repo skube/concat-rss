@@ -24,7 +24,7 @@ myApp.controller('mainController', ['$scope', function ($scope) {
 			includeParam += '&max_price=' + $scope.searchPriceMax;
 		}
 		
-		return 'http://toronto.craigslist.ca/search/sss?' + escape($scope.searchTerm) + '&sort=rel&format=rss' + includeParam;
+		return 'http://toronto.craigslist.ca/search/sss?query=' + escape($scope.searchTerm) + '&sort=rel&format=rss' + includeParam;
 	};
 
 	$scope.outputRssString2 = function () {
