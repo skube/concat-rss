@@ -1,5 +1,5 @@
 # concat-rss
-Automatically creates RSS URLs for Craigslist and Kijiji to be used with something like RSS Mix.
+[Automatically combines](https://rawgit.com/skube/concat-rss/master/index.html) RSS URLs for Craigslist and Kijiji to be used with something like RSS Mix.
 
 The goal is to create a simple Angular app (for learning purposes) which can easily and quickly create a string which can be easily copied into [RSS Mix](http://www.rssmix.com/)
 
